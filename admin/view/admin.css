@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap');
+
+*{
+    font-family: "Nunito", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    transition: all 0.2s linear
+}
+
+
+html{
+    scroll-behavior: smooth;
+}
+
+li {
+    list-style: none;
+}
+
+
+/* Phần header */
+
+.header{
+    background-color: #B7FCFA;
+    border-bottom: 1px solid black;
+}
+
+.header .logo img{
+    width: 50px;
+    height: 50px;
+}
+
+.header .menu li a{
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+    font-weight: 900;
+}
+
+.header .menu li{
+    padding: 10px;
+}
+
+
+.header .header-right{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.header .search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.header .search input{
+    width: 300px;
+    height: 35px;
+    border: none;
+    border-radius: 10px;
+    padding-right: 100px;
+    color: #017EB6;
+    border: 2px solid rgb(138, 138, 138);
+}
+
+.header .search input:focus{
+    outline: none;
+}
+
+.header .search input::placeholder{
+    color: white;
+}
+
+.header .search i{
+    font-size: 22px;
+    margin-left: 5px;
+}
+
+.dangnhap-dangky{
+    display: flex;
+    justify-content: end;
+    margin-left: 30px;
+}
+
+.header .dangnhap-dangky li a{
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+    font-weight: 900;
+}
+
+.header .dangnhap-dangky li{
+    padding: 10px;
+}
+
+
+/* Tiêu đề trang */
+.row.home-title{
+    margin: 10px 0 100px 0;
+    color: #017EB6;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.row.home-title p{
+    border-bottom: 5px solid #017EB6;
+}
+
+
+
+
+
+
+
+/* Phần footer */
+
+.footer.row .col-md-4{
+    border-right: solid 1px;
+}
+
+h6.footer-title{
+    font-weight: 900;
+    color: #017EB6;
+}
+
+h6 img{
+    width: 20px;
+}
+
+.col-md-4 .info-contact span{
+    cursor: auto;
+}
+
+
+.col-md-4 p{
+    text-align: justify;
+}
+
+.col-md-4 a span{
+    color: red;
+}
+
+.col-md-4 .info-contact span{
+    color: red;
+}
+
+.col-md-4 h6 i.hand{
+    font-size: 17px;
+    color: #017EB6;
+}
+
+.col-md-4 h6 i.facebook{
+    color: #0866FF;
+    font-size: 20px;
+}
+.col-md-4 a{
+    color: #212529;
+    text-decoration: none;
+}
+
+.footer{
+    position: relative;
+    padding-top: 20px;
+    background-color: rgb(233, 233, 233);
+}
+
+.btn-backtop a{
+    display: block;
+}
+
+.btn-backtop i{
+    color: white;
+    font-size: 25px;
+}
+
+.btn-backtop{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #017EB6;
+    border: none;
+}
+
+
