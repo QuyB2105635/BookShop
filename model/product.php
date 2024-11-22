@@ -1,11 +1,20 @@
 <?php 
-    function getAll_Products() {
-        $conn = connectDB();
-        $stmt = $conn->prepare("SELECT * FROM product");
-        $stmt->execute();
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $results;
-    }
+function getAll_Products() {
+    $conn = connectDB();
+    // Lấy thông tin sản phẩm cùng với tên nhà xuất bản từ bảng brand
+    $sql = "
+        SELECT p.*, b.brand_name 
+        FROM product p
+        LEFT JOIN brand b ON p.brand_id = b.id
+    ";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
+}
+
+
+    
 
     function delete_product($id){
         $conn = connectdb();
@@ -24,76 +33,54 @@
         return $one_product;
     }
     
-    function update_product($id, $brand_id, $name_product, $selling_price, $import_price, $color, $display, $storage, $camera, $CPU, $battery, $image_path) {
+    function update_product($id, $brand_id, $name_product, $selling_price, $import_price, $tacgia, $kichthuoc, $sotrang, $namxuatban, $ngonngu, $theloai, $image_path) {
         $conn = connectDB();
         $sql = "UPDATE product SET 
                     brand_id = :brand_id, 
                     name_product = :name_product, 
                     selling_price = :selling_price, 
                     import_price = :import_price, 
-                    color = :color, 
-                    display = :display, 
-                    storage = :storage, 
-                    camera = :camera, 
-                    CPU = :CPU, 
-                    battery = :battery, 
-                    image = :image 
+                    tacgia = :tacgia, 
+                    kichthuoc = :kichthuoc, 
+                    sotrang = :sotrang, 
+                    namxuatban = :namxuatban, 
+                    ngonngu = :ngonngu, 
+                    theloai = :theloai, 
+                    image = :image_path 
                 WHERE id = :id";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':brand_id', $brand_id);
         $stmt->bindParam(':name_product', $name_product);
         $stmt->bindParam(':selling_price', $selling_price);
         $stmt->bindParam(':import_price', $import_price);
-        $stmt->bindParam(':color', $color);
-        $stmt->bindParam(':display', $display);
-        $stmt->bindParam(':storage', $storage);
-        $stmt->bindParam(':camera', $camera);
-        $stmt->bindParam(':CPU', $CPU);
-        $stmt->bindParam(':battery', $battery);
-        $stmt->bindParam(':image', $image_path);
+        $stmt->bindParam(':tacgia', $tacgia);
+        $stmt->bindParam(':kichthuoc', $kichthuoc);
+        $stmt->bindParam(':sotrang', $sotrang);
+        $stmt->bindParam(':namxuatban', $namxuatban);
+        $stmt->bindParam(':ngonngu', $ngonngu);
+        $stmt->bindParam(':theloai', $theloai);
+        $stmt->bindParam(':image_path', $image_path);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     }
     
-
-
-    // function insertProduct($brand_id, $name_product, $selling_price , $import_price, $color, $display, $storage, $camera, $CPU, $battery, $image_path) {
-    //     $conn = connectDB();
-    //     $sql = "INSERT INTO product (brand_id, name_product, selling_price, import_price, $color, display, storage, camera, CPU, battery, image) 
-    //             VALUES (:brand_id, :name_product, :selling_price, :import_price, :color, :display, :storage, :camera, :CPU, :battery, :image)";
-    //     $stmt = $conn->prepare($sql);
-
-    //     $stmt->bindParam(':brand_id', $brand_id);
-    //     $stmt->bindParam(':name_product', $name_product);
-    //     $stmt->bindParam(':selling_price', $selling_price);
-    //     $stmt->bindParam(':import_price', $import_price);
-    //     $stmt->bindParam(':color', $color);
-    //     $stmt->bindParam(':display', $display);
-    //     $stmt->bindParam(':storage', $storage);
-    //     $stmt->bindParam(':camera', $camera);
-    //     $stmt->bindParam(':CPU', $CPU);
-    //     $stmt->bindParam(':battery', $battery);
-    //     $stmt->bindParam(':image', $image_path);
-        
-    //     $stmt->execute();
-    // }
-    function insertProduct($brand_id, $name_product, $selling_price, $import_price, $color, $display, $storage, $camera, $CPU, $battery, $image_path) {
+    function insertProduct($brand_id, $name_product, $selling_price, $import_price, $tacgia, $kichthuoc, $sotrang, $namxuatban, $ngonngu, $theloai, $image_path) {
         $conn = connectDB();
-        $sql = "INSERT INTO product (brand_id, name_product, selling_price, import_price, color, display, storage, camera, CPU, battery, image) 
-                VALUES (:brand_id, :name_product, :selling_price, :import_price, :color, :display, :storage, :camera, :CPU, :battery, :image)";
+        $sql = "INSERT INTO product (brand_id, name_product, selling_price, import_price, tacgia, kichthuoc, sotrang, namxuatban, ngonngu, theloai, image) 
+                VALUES (:brand_id, :name_product, :selling_price, :import_price, :tacgia, :kichthuoc, :sotrang, :namxuatban, :ngonngu, :theloai, :image_path)";
         $stmt = $conn->prepare($sql);
     
         $stmt->bindParam(':brand_id', $brand_id);
         $stmt->bindParam(':name_product', $name_product);
         $stmt->bindParam(':selling_price', $selling_price);
         $stmt->bindParam(':import_price', $import_price);
-        $stmt->bindParam(':color', $color);
-        $stmt->bindParam(':display', $display);
-        $stmt->bindParam(':storage', $storage);
-        $stmt->bindParam(':camera', $camera);
-        $stmt->bindParam(':CPU', $CPU);
-        $stmt->bindParam(':battery', $battery);
-        $stmt->bindParam(':image', $image_path);
+        $stmt->bindParam(':tacgia', $tacgia);
+        $stmt->bindParam(':kichthuoc', $kichthuoc);
+        $stmt->bindParam(':sotrang', $sotrang);
+        $stmt->bindParam(':namxuatban', $namxuatban);
+        $stmt->bindParam(':ngonngu', $ngonngu);
+        $stmt->bindParam(':theloai', $theloai);
+        $stmt->bindParam(':image_path', $image_path);
         
         $stmt->execute();
     }
@@ -128,5 +115,8 @@
         // Trả về ID của đơn hàng vừa được thêm
         return $conn->lastInsertId();
     }
+
+
+    
     
 ?>

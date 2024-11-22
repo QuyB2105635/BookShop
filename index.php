@@ -148,34 +148,34 @@ switch ($route) {
 
             // var_dump($_SESSION['cart']);
 
-            // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            //     // Lấy thông tin thanh toán từ form
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // Lấy thông tin thanh toán từ form
 
-            //     $name_customer = $_POST['name'];
-            //     $address = $_POST['address'];
-            //     $phone_number = $_POST['phone'];
-            //     $payment_method = $_POST['payment_method'];
+                $name_customer = $_POST['name'];
+                $address = $_POST['address'];
+                $phone_number = $_POST['phone'];
+                $payment_method = $_POST['payment_method'];
 
-            //     // Tính tổng tiền giỏ hàng
-            //     $total_price = 0;
-            //     foreach ($_SESSION['cart'] as $cart_item) {
-            //         $product_id = $cart_item['product_id'];
-            //         $quantity = $cart_item['quantity'];
-            //         $total_price += $cart_item['selling_price'] * $cart_item['quantity'];
-            //     }
+                // Tính tổng tiền giỏ hàng
+                $total_price = 0;
+                foreach ($_SESSION['cart'] as $cart_item) {
+                    $product_id = $cart_item['product_id'];
+                    $quantity = $cart_item['quantity'];
+                    $total_price += $cart_item['selling_price'] * $cart_item['quantity'];
+                }
 
-            //     // Lưu thông tin đơn hàng vào cơ sở dữ liệu (giả sử bạn có một bảng "orders")
-            //     $date_order = date('Y-m-d H:i:s');
-            //     $order_status = 'pending';  // Trạng thái đơn hàng (chờ xử lý)
-            //     $results = addOrder($name_customer, $address, $phone_number, $product_id, $quantity, $date_order, $total_price, $payment_method, $order_status);
-            //     if ($results) {
-            //         include 'view/thanks.php';
-            //         unset($_SESSION['cart']);
-            //     } else {
-            //         echo 'Đặt hàng không thành công';
-            //     }
-            //     exit;
-            // }
+                // Lưu thông tin đơn hàng vào cơ sở dữ liệu (giả sử bạn có một bảng "orders")
+                $date_order = date('Y-m-d H:i:s');
+                $order_status = 'pending';  // Trạng thái đơn hàng (chờ xử lý)
+                $results = addOrder($name_customer, $address, $phone_number, $product_id, $quantity, $date_order, $total_price, $payment_method, $order_status);
+                if ($results) {
+                    include 'view/thanks.php';
+                    unset($_SESSION['cart']);
+                } else {
+                    echo 'Đặt hàng không thành công';
+                }
+                exit;
+            }
         } else {
             // Nếu giỏ hàng trống, chuyển hướng đến trang giỏ hàng
             header('Location: index.php?route=viewcart');

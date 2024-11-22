@@ -18,6 +18,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 0) {
     switch ($route) {
         case 'sanpham':
             $results = getAll_Products();
+            // var_dump($results);
             include './view/product/product-admin.php';
             break;
         case 'brand':
@@ -104,6 +105,8 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 0) {
             }
             break;
         case 'addproduct':
+            $results = getAll_Brand();
+            // var_dump($results);
             include "./view/product/newProduct.php";
             break;
         case "themsanphammoi":
@@ -112,13 +115,13 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 0) {
                 $brand_id = $_POST['brand_id'];
                 $selling_price = $_POST['selling_price'];
                 $import_price = $_POST['import_price'];
-                $color = $_POST['color'];
-                $display = $_POST['display'];
-                $storage = $_POST['storage'];
-                $camera = $_POST['camera'];
-                $CPU = $_POST['CPU'];
-                $battery = $_POST['battery'];
-    
+                $tacgia = $_POST['tacgia'];
+                $kichthuoc = $_POST['kichthuoc'];
+                $sotrang = $_POST['sotrang'];
+                $namxuatban = $_POST['namxuatban'];
+                $ngonngu = $_POST['ngonngu'];
+                $theloai = $_POST['theloai'];
+           
                 // Xử lý upload ảnh
                 if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
                     $target_dir = "../uploads/";
@@ -140,7 +143,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 0) {
                 }
     
                 // Chèn sản phẩm vào cơ sở dữ liệu
-                insertProduct($brand_id, $name_product, $selling_price , $import_price, $color, $display, $storage, $camera, $CPU, $battery, $image_path);
+                insertProduct($brand_id, $name_product, $selling_price, $import_price, $tacgia, $kichthuoc, $sotrang, $namxuatban, $ngonngu, $theloai, $image_path);
     
                 // Chuyển hướng về trang danh sách sản phẩm
                 header('Location: index.php?route=sanpham');
@@ -158,6 +161,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 0) {
                     break;
                 }
                 $one_product = $one_product[0];
+                $brands = getAll_Brand();
                 include "./view/product/updateproduct.php";
             }
             if (isset($_POST['capnhat']) && $_POST['capnhat']) {
@@ -166,12 +170,12 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 0) {
                 $name_product = $_POST['name_product'];
                 $selling_price = $_POST['selling_price'];
                 $import_price = $_POST['import_price'];
-                $color = $_POST['color'];
-                $display = $_POST['display'];
-                $storage = $_POST['storage'];
-                $camera = $_POST['camera'];
-                $CPU = $_POST['CPU'];
-                $battery = $_POST['battery'];
+                $tacgia = $_POST['tacgia'];
+                $kichthuoc = $_POST['kichthuoc'];
+                $sotrang = $_POST['sotrang'];
+                $namxuatban = $_POST['namxuatban'];
+                $ngonngu = $_POST['ngonngu'];
+                $theloai = $_POST['theloai'];
                 if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
                     $target_dir = "../uploads/";
                     $target_file = $target_dir . basename($_FILES["image"]["name"]);
@@ -180,7 +184,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 0) {
                 } else {
                     $image_path = $_POST['current_image'];
                 }
-                update_product($id, $brand_id, $name_product, $selling_price, $import_price, $color, $display, $storage, $camera, $CPU, $battery, $image_path);
+                update_product($id, $brand_id, $name_product, $selling_price, $import_price, $tacgia, $kichthuoc, $sotrang, $namxuatban, $ngonngu, $theloai, $image_path);
 
                 header('Location: index.php?route=sanpham');
                 exit();

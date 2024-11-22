@@ -8,6 +8,15 @@ function getAll_Brand() {
     return $results;
 }
 
+
+function getBrandByID($id) {
+    $conn = connectDB();
+    $stmt = $conn->prepare("SELECT * FROM brand WHERE id =:id");
+    $stmt->execute();   
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
+}
+
 function getone_brand($id){
     $conn = connectdb();
     $stmt = $conn->prepare("SELECT * FROM brand WHERE id = :id");

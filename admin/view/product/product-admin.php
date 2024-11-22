@@ -12,7 +12,7 @@
         <thead>
             <tr>
                 <th>STT</th>
-                <th>NXB_id</th>
+                <th>Nhà xuất bản</th>
                 <th>Tên tác phẩm</th>
                 <th>Giá nhập</th>
                 <th>Giá bán</th>
@@ -36,16 +36,17 @@
                     echo '
                         <tr>
                             <td>' . $i . '</td>
-                            <td>' . htmlspecialchars($product['brand_id']) . '</td>
+                            <td>' . htmlspecialchars($product['brand_name']) . '</td>
                             <td>' . htmlspecialchars($product['name_product']) . '</td>
                             <td>' . htmlspecialchars(number_format($product["import_price"], 0, ',', '.')) . ' VNĐ</td>
                             <td>' . htmlspecialchars(number_format($product["selling_price"], 0, ',', '.')) . ' VNĐ</td> 
                             <td><img style="width: 100px; height: 100px" src="../uploads/' . $product['image'] . '" alt="Hình ảnh sản phẩm"></td>
-                            <td>' . htmlspecialchars($product['display']) . '</td>
-                            <td>' . htmlspecialchars($product['storage']) . '</td>
-                            <td>' . htmlspecialchars($product['camera']) . '</td>
-                            <td>' . htmlspecialchars($product['CPU']) . '</td>
-                            <td>' . htmlspecialchars($product['battery']) . '</td>
+                            <td>' . htmlspecialchars($product['tacgia']) . '</td>
+                            <td>' . htmlspecialchars($product['kichthuoc']) . '</td>
+                            <td>' . htmlspecialchars($product['sotrang']) . '</td>
+                            <td>' . htmlspecialchars($product['namxuatban']) . '</td>
+                            <td>' . htmlspecialchars($product['ngonngu']) . '</td>
+                            <td>' . htmlspecialchars($product['theloai']) . '</td>
                             <td><a href="index.php?route=updateproduct&id=' . $product['id'] . '">Sửa</a> | <a href="index.php?route=deleteproduct&id=' . $product['id'] . '">Xóa</a></td>
                         </tr>
                             ';
