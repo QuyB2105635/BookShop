@@ -22,8 +22,8 @@
                                                 <img style="width: 220px; height: 270px" src="./uploads/' . $product['image'] . '" alt="Hình ảnh sản phẩm">
                                                 <div class="box-text">
                                                     <h2 class="name-product">' . htmlspecialchars($product['name_product']) . '</h2>
-                                                    <h2>Số Trang: ' . htmlspecialchars($product['storage']) . '</h2>
-                                                   <h2>Tác Giả: ' . htmlspecialchars($product['color']) . '</h2>
+                                                    <h2>Số Trang: ' . htmlspecialchars($product['sotrang']) . '</h2>
+                                                   <h2>Tác Giả: ' . htmlspecialchars($product['tacgia']) . '</h2>
                                                     <h4 class="price">' . number_format($product["selling_price"], 0, ',', '.') . ' vnđ</h4>
                                                     <del style="text-decoration: line-through;">' . number_format($product["import_price"], 0, ',', '.') . ' vnđ</del>
                                                    <br>
@@ -42,7 +42,7 @@
         ?>
         </div>
 
-            <!-- Phần sản phẩm khác -->
+            <!-- Phần sản phẩm khác
         <div class="row home-title d-flex justify-content-center align-items-center"><p>SẢN PHẨM KHÁC</p></div>
         <div class="row products" id="products">
         <?php
@@ -73,4 +73,4 @@
                 }
             }
         ?>
-        </div>
+        </div> -->

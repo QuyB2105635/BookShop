@@ -1,7 +1,5 @@
-<?php 
-function getAll_Products() {
+<?php function getAll_Products() {
     $conn = connectDB();
-    // Lấy thông tin sản phẩm cùng với tên nhà xuất bản từ bảng brand
     $sql = "
         SELECT p.*, b.brand_name 
         FROM product p
@@ -10,6 +8,12 @@ function getAll_Products() {
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    // Kiểm tra dữ liệu trả về
+    // echo '<pre>';
+    // print_r($results); // In dữ liệu ra để kiểm tra
+    // echo '</pre>';
+
     return $results;
 }
 
@@ -85,38 +89,34 @@ function getAll_Products() {
         $stmt->execute();
     }
     
-    function  addOrder($name_customer, $address, $phone_number, $product_id, $quantity, $date_order, $total_price, $payment_method, $order_status) {
-        // Kết nối cơ sở dữ liệu
+
+    function searchProductsByName($query) {
         $conn = connectDB();
-        
-        // Câu lệnh SQL để thêm đơn hàng mới
-        $sql = "INSERT INTO `orders` (name_customer, address, phone_number, product_id, quantity, date_order, total_price, payment_method, order_status) 
-                VALUES (:name_customer, :address, :phone_number, :product_id, :quantity, :date_order, :total_price, :payment_method, :order_status )";
-        
-        // Chuẩn bị câu lệnh SQL
+    
+        $sql = "SELECT * FROM product WHERE name_product LIKE :searchTerm";
         $stmt = $conn->prepare($sql);
         
-       
-        // Bind tham số vào câu lệnh
-        $stmt->bindParam(':name_customer', $name_customer);
-        $stmt->bindParam(':address', $address);
-        $stmt->bindParam(':phone_number', $phone_number);
-        $stmt->bindParam(':product_id', $product_id);
-        $stmt->bindParam(':quantity', $quantity);
-        $stmt->bindParam(':date_order', $date_order);
-        $stmt->bindParam(':total_price', $total_price);
-        $stmt->bindParam(':payment_method', $payment_method);
-        $stmt->bindParam(':order_status', $order_status);
-
-        
-        // Thực thi câu lệnh SQL
+        if ($stmt === false) {
+            die('Prepare failed: ' . htmlspecialchars($conn->errorInfo()[2]));
+        }
+    
+        $searchTerm = "%" . $query . "%";
+        $stmt->bindParam(':searchTerm', $searchTerm, PDO::PARAM_STR);
         $stmt->execute();
         
-        // Trả về ID của đơn hàng vừa được thêm
-        return $conn->lastInsertId();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if ($result === false) {
+            die('Execute failed: ' . htmlspecialchars($stmt->errorInfo()[2]));
+        }
+    
+        if (count($result) > 0) {
+            return $result;
+        } else {
+            return false; // Không có kết quả
+        }
     }
-
-
+    
+    
     
     
 ?>

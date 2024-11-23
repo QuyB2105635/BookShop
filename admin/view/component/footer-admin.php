@@ -13,7 +13,7 @@
                     
                     <div class="info-contact"><h6><b>Tên:</b> <span class='my-name'>Ngọc Quý</span></h6></div> 
                     <div class="info-contact"><h6><b><i class="fa-solid fa-phone"></i> Số điện thoại:</b> <span>0939783701</span></h6></div>
-                    <div class="info-contact"><h6><img src="public/images/zalo.webp"><b> Zalo:</b> <span>0939783701</span></h6></div>
+                    <div class="info-contact"><h6><img src="../public/images/zalo.webp"><b> Zalo:</b> <span>0939783701</span></h6></div>
                     <div><h6>
                     <b><i class="facebook fa-brands fa-facebook"></i> Facebook:</b> 
                     <a href="https://web.facebook.com/profile.php?id=100052698496817" target="_blank">
@@ -32,13 +32,6 @@
             </div>
 </div>
 
-<script>
-				// Hiển thị vòng xoay khi trang được tải lại
-		window.addEventListener('beforeunload', function () {
-		document.getElementById('loader').style.display = 'block';
-		});
-
-</script>
 
 
 </body>

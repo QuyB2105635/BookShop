@@ -1,9 +1,9 @@
-<div class="container-fluid">
+<div class="container">
 
 
-<div class="row home-title d-flex justify-content-center align-items-center">
-    <p>Danh sách NXB</p>
-</div>
+<div class="home-title">
+        <p style="font-size: 40px; color: #017EB6;border-bottom: 5px solid #017EB6;font-weight: 900" class="text-center">Danh sách nhà xuất bản</p>
+    </div>
 <div class="row">
     <a href="index.php?route=addbrand"><button class="btn btn-primary">Thêm NXB</button></a>
 </div>

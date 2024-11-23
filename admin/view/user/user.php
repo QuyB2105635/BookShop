@@ -1,9 +1,9 @@
 <div class="container-fluid">
 
 
-<div class="row home-title d-flex justify-content-center align-items-center">
-    <p>Danh sách tài khoản</p>
-</div>
+<div class="home-title">
+        <p style="font-size: 40px; color: #017EB6;border-bottom: 5px solid #017EB6;font-weight: 900" class="text-center">Danh sách tài khoản người dùng</p>
+    </div>
     
 <div class="row">
     <table class="table table-bordered">

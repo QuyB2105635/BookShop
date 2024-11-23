@@ -1,13 +1,21 @@
+
+
+
+
+
+
+
+
 <div class="row home-title d-flex justify-content-center align-items-center">
-            <p>TẤT CẢ SẢN PHẨM</p>
+            <p>Kết quả tìm kiếm với từ khóa: "<?php echo htmlspecialchars($keyword); ?>"</p>
         </div>
         <div class="row products" id="products">
         <?php
         // var_dump($results);
-            if (isset($results) && (count($results) > 0)) {
+            if (isset($products) && (count($products) > 0)) {
                 $i = 1;
                 // từ cái mảng result chạy qua các item là product
-                foreach ($results as $product) {
+                foreach ($products as $product) {
                 
                     echo '
                                  
@@ -33,6 +41,8 @@
                             ';
                     $i++;
                 }
+            }else{
+                echo '<h1 class="text-center">Không có sản phẩm nào phù hợp với từ khóa của bạn.</h1>';
             }
             
         ?>
